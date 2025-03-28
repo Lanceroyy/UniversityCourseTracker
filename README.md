@@ -91,7 +91,8 @@ Please ensure your code follows project guidelines and includes appropriate test
 
 ## 📄 License
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
+To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
 
 ## 📞 Contact
 
