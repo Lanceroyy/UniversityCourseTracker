@@ -6,6 +6,15 @@ University Course Tracker is a cross-platform mobile application designed to hel
 
 ## 🌟 Features
 
+### Robust SQLite Database Management
+- Local data storage using SQLite
+- Efficient, lightweight database solution
+- Full CRUD (Create, Read, Update, Delete) operations
+- Seamless data persistence across app sessions
+- Supports offline functionality
+- Secure and reliable data management
+- Optimized performance for mobile devices
+
 ### Comprehensive Course Management
 - Create, update, delete, and view academic terms and courses
 - Manage multiple courses within each term
@@ -86,7 +95,7 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 ## 📞 Contact
 
-For inquiries or support, please contact [Your Name] at [your.email@example.com].
+For inquiries or support, please contact Lanceroy at lanceroycompany@gmail.com.
 
 ## 🔗 Additional Resources
 - [Project Documentation](link-to-docs)
