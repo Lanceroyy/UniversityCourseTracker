@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C971App.Views.TermEdit"
+             Title="Edit Term">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+
+                <Grid Padding="5" BackgroundColor="WhiteSmoke" ColumnSpacing="22" RowSpacing="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        
+                        <!--
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        -->
+
+                    </Grid.RowDefinitions>      
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" TextColor="Teal" VerticalTextAlignment="Center">Term Id</Label>
+                    <Entry x:Name="TermId" Grid.Row="0" Grid.Column="1" IsReadOnly="True"
+                           Placeholder="Enter Term Id - Not really used since box is readonly." Text="{Binding id}" TextColor="Teal" VerticalTextAlignment="Center"/>
+                    
+                    <Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center">Name</Label>
+                    <Entry x:Name="TermName" Grid.Row="1" Grid.Column="1" Placeholder="Enter Term Name" Text="{Binding Name}" VerticalTextAlignment="Center" />
+
+                    <Label Grid.Row="2" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center">Semester</Label>
+                    <Picker x:Name="TermSemesterPicker" Title="Select a Color" Grid.Row="2" Grid.Column="1" FontSize="Medium" TitleColor="Teal">
+                        <Picker.Items>
+                            <x:String>Spring</x:String>
+                            <x:String>Summer</x:String>
+                            <x:String>Fall</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <!--
+                    <Label Grid.Row="3" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center">Stock</Label>
+                    <Entry x:Name="TermsInStock" Grid.Row="3" Grid.Column="1" Placeholder="Enter Number of Terms in stock" Text="{Binding InStock}" VerticalTextAlignment="Center" />
+
+                    <Label Grid.Row="4" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center">Price</Label>
+                    <Entry x:Name="TermPrice" Grid.Row="4" Grid.Column="1" Placeholder="Enter Term Price" Text="{Binding Price}" VerticalTextAlignment="Center" />
+                    -->
+                    
+
+                    <Label Grid.Row="3" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center">Start Date</Label>
+                    <DatePicker x:Name="StartDatePicker" Grid.Row="3" Grid.Column="1" />
+
+                    <Label Grid.Row="4" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center">End Date</Label>
+                    <DatePicker x:Name="EndDatePicker" Grid.Row="4" Grid.Column="1" />
+
+                </Grid>
+                
+<!--COURSE SECTION-->
+                
+                <!--Button to add a new Course--> 
+                <Button 
+                    x:Name="AddCourse"
+                    Clicked="AddCourse_OnClicked"
+                    Text="Add Course" />
+
+                <!--<Label FontSize="Large" Text="Course Count"/> -->
+                <Label x:Name="CountLabel" FontSize="Large"/>
+                <Label
+                    x:Name="Labellist"
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    Text="Course List" />
+                <Label Text="                                                       "/>
+                <Label Text="_______________________________________________________"/>
+
+                <!--Display Courses in a list. -->
+                <CollectionView x:Name="CourseCollectionView" 
+                EmptyView="No Courses to display." 
+                SelectionChanged="CourseCollectionView_OnSelectionChanged" 
+                SelectionMode="Single">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <!--Define the appearahce of each item in the list using StackLayout and a Grid-->
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Grid Padding="5" 
+                                    BackgroundColor="WhiteSmoke"
+                                    ColumnSpacing="22"
+                                    RowSpacing="1">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        
+                                        <!--
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        -->
+                                        
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    
+                                    <!-- Row 0 -->
+                                    <Label Grid.Row="0" Grid.Column="0" 
+                                       FontAttributes="Bold" 
+                                       FontSize="Medium" 
+                                       VerticalTextAlignment="Center" 
+                                       >Name</Label>
+                                    <Label Grid.Row="0" Grid.Column="1" 
+                                       FontSize="Medium" 
+                                       Text="{Binding Name}" 
+                                       VerticalTextAlignment="Center" />    
+
+                                    <!-- Row 1 -->
+                                    <Label Grid.Row="1" Grid.Column="0" 
+                                       FontAttributes="Bold" 
+                                       FontSize="Medium" 
+                                       VerticalTextAlignment="Center" 
+                                       >Status</Label>
+                                    <Label Grid.Row="1" Grid.Column="1" 
+                                       FontSize="Medium" 
+                                       Text="{Binding Status}" 
+                                       VerticalTextAlignment="Center" />
+
+                                    <!--
+                                    <Label Grid.Row="2" Grid.Column="0" 
+                                       FontAttributes="Bold" 
+                                       FontSize="Medium" 
+                                       VerticalTextAlignment="Center" 
+                                       >Stock</Label>
+                                    <Label Grid.Row="2" Grid.Column="1" 
+                                       FontSize="Medium" 
+                                       Text="{Binding Stock}" 
+                                       VerticalTextAlignment="Center" />
+
+                                    <Label Grid.Row="3" Grid.Column="0" 
+                                       FontAttributes="Bold" 
+                                       FontSize="Medium" 
+                                       VerticalTextAlignment="Center" 
+                                       >Price</Label>
+                                    <Label Grid.Row="3" Grid.Column="1" 
+                                       FontSize="Medium" 
+                                       Text="{Binding Price}" 
+                                       VerticalTextAlignment="Center" />
+                                     -->
+
+                                    <!-- Row 5 (Start Date) -->
+                                    <Label Grid.Row="2" Grid.Column="0" 
+                                       FontAttributes="Bold" 
+                                       FontSize="Medium" 
+                                       VerticalTextAlignment="Center" 
+                                       >Start Date</Label>
+
+                                    <Label Grid.Row="2" Grid.Column="1" 
+                                       FontSize="Medium" 
+                                       Text="{Binding StartDate, StringFormat='{0:MM/dd/yyyy}'}"  
+                                       VerticalTextAlignment="Center" />
+
+                                    <!-- TODO: Might use 0:M instead of 0:MM for string format -->
+
+                                    <!-- Row 6 (End Date) -->
+                                    <Label Grid.Row="3" Grid.Column="0" 
+                                      FontAttributes="Bold" 
+                                      FontSize="Medium" 
+                                      VerticalTextAlignment="Center" 
+                                      >End Date</Label>
+
+                                    <Label Grid.Row="3" Grid.Column="1" 
+                                       FontSize="Medium" 
+                                       Text="{Binding EndDate, StringFormat='{0:MM/dd/yyyy}'}"  
+                                       VerticalTextAlignment="Center" />
+                                    
+                                </Grid>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="SaveTerm" Text="Save" Clicked="SaveTerm_OnClicked"></ToolbarItem>
+        <ToolbarItem x:Name="CancelTerm" Text="Cancel" Clicked="CancelTerm_OnClicked"></ToolbarItem>
+        <ToolbarItem x:Name="DeleteTerm" Text="Delete" Clicked="DeleteTerm_OnClicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
+</ContentPage>
+                   

@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage  
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="C971App.Views.ReportPage"
+    Title="Course Reports">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10">
+                <!-- Search and Filter Controls -->
+                <Grid Padding="5" BackgroundColor="WhiteSmoke" ColumnSpacing="22" RowSpacing="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Search Bar -->
+                    <SearchBar x:Name="SearchBar" 
+                               Placeholder="Search courses by name..." 
+                               TextChanged="OnSearchTextChanged"
+                               Grid.Row="0"/>
+
+                    <!-- Date Filters -->
+                    <Grid Grid.Row="1" ColumnDefinitions="Auto,*">
+                        <Label Grid.Column="0" 
+                               Text="Start Date:" 
+                               FontAttributes="Bold"
+                               FontSize="Medium"
+                               VerticalTextAlignment="Center"/>
+                        <DatePicker x:Name="StartDatePicker" 
+                                   Grid.Column="1"
+                                   DateSelected="OnDateSelected"/>
+                    </Grid>
+
+                    <Grid Grid.Row="2" ColumnDefinitions="Auto,*">
+                        <Label Grid.Column="0" 
+                               Text="End Date:" 
+                               FontAttributes="Bold"
+                               FontSize="Medium"
+                               VerticalTextAlignment="Center"/>
+                        <DatePicker x:Name="EndDatePicker" 
+                                   Grid.Column="1"
+                                   DateSelected="OnDateSelected"/>
+                    </Grid>
+                </Grid>
+
+                <!-- Status Label -->
+                <Label x:Name="CountLabel" 
+                       FontSize="Medium"
+                       Margin="5,10,5,5"/>
+
+                <Label Text="Course List" 
+                       FontAttributes="Bold"
+                       FontSize="Large"
+                       Margin="5,5,5,0"/>
+
+                <Label Text="_______________________________________________________"/>
+
+                <!-- Course Collection View -->
+                <CollectionView x:Name="ReportCollectionView" 
+                                EmptyView="No courses match your search criteria." 
+                                SelectionMode="Single"
+                                SelectionChanged="ReportCollectionView_OnSelectionChanged">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Grid Padding="5" 
+                                     BackgroundColor="WhiteSmoke"
+                                     ColumnSpacing="22"
+                                     RowSpacing="1">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Course Name -->
+                                    <Label Grid.Row="0" Grid.Column="0" 
+                                           FontAttributes="Bold" 
+                                           FontSize="Medium" 
+                                           VerticalTextAlignment="Center"
+                                           Text="Name" />
+                                    <Label Grid.Row="0" Grid.Column="1" 
+                                           FontSize="Medium" 
+                                           Text="{Binding Name}" 
+                                           VerticalTextAlignment="Center" />
+
+                                    <!-- Course Status -->
+                                    <Label Grid.Row="1" Grid.Column="0" 
+                                           FontAttributes="Bold" 
+                                           FontSize="Medium" 
+                                           VerticalTextAlignment="Center"
+                                           Text="Status" />
+                                    <Label Grid.Row="1" Grid.Column="1" 
+                                           FontSize="Medium" 
+                                           Text="{Binding Status}" 
+                                           VerticalTextAlignment="Center" />
+
+                                    <!-- Start Date -->
+                                    <Label Grid.Row="2" Grid.Column="0" 
+                                           FontAttributes="Bold" 
+                                           FontSize="Medium" 
+                                           VerticalTextAlignment="Center"
+                                           Text="Start Date" />
+                                    <Label Grid.Row="2" Grid.Column="1" 
+                                           FontSize="Medium" 
+                                           Text="{Binding StartDate, StringFormat='{0:MM/dd/yyyy}'}" 
+                                           VerticalTextAlignment="Center" />
+
+                                    <!-- End Date -->
+                                    <Label Grid.Row="3" Grid.Column="0" 
+                                           FontAttributes="Bold" 
+                                           FontSize="Medium" 
+                                           VerticalTextAlignment="Center"
+                                           Text="End Date" />
+                                    <Label Grid.Row="3" Grid.Column="1" 
+                                           FontSize="Medium" 
+                                           Text="{Binding EndDate, StringFormat='{0:MM/dd/yyyy}'}" 
+                                           VerticalTextAlignment="Center" />
+
+                                    <!-- Term Name -->
+                                    <Label Grid.Row="4" Grid.Column="0" 
+                                           FontAttributes="Bold" 
+                                           FontSize="Medium" 
+                                           VerticalTextAlignment="Center"
+                                           Text="Term" />
+                                    <Label Grid.Row="4" Grid.Column="1" 
+                                           FontSize="Medium" 
+                                           Text="{Binding TermName}" 
+                                           VerticalTextAlignment="Center" />
+                                </Grid>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

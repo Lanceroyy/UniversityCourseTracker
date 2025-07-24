@@ -1,103 +1,29 @@
-# University Course Tracker 📚
+<strong>**DO NOT DISTRIBUTE OR PUBLICLY POST SOLUTIONS TO THESE LABS. MAKE ALL FORKS OF THIS REPOSITORY WITH SOLUTION CODE PRIVATE. PLEASE REFER TO THE STUDENT CODE OF CONDUCT AND ETHICAL EXPECTATIONS FOR COLLEGE OF INFORMATION TECHNOLOGY STUDENTS FOR SPECIFICS. **</strong>
 
-## Overview
+# WESTERN GOVERNORS UNIVERSITY 
+## D424 – SOFTWARE ENGINEERING CAPSTONE
+Welcome to Software Engineering Capstone! This is an opportunity for students to develop full stack software engineering documentation and applications. They will execute documentation, unit testing, revision of software applications, and deploy software applications with scripts and containers on a cloud platform.
 
-University Course Tracker is a cross-platform mobile application designed to help students efficiently manage their academic terms, courses, and assessments. Built with .NET MAUI, this app provides a seamless, intuitive experience across Android, iOS, Windows, and macOS.
+FOR SPECIFIC TASK INSTRUCTIONS AND REQUIREMENTS FOR THIS ASSESSMENT, PLEASE REFER TO THE COURSE PAGE.
+BASIC INSTRUCTIONS
+For this assessment, you will deploy your developed full stack software product to a web service of your choice.
 
-## 🌟 Features
 
-### Robust SQLite Database Management
-- Local data storage using SQLite
-- Efficient, lightweight database solution
-- Full CRUD (Create, Read, Update, Delete) operations
-- Seamless data persistence across app sessions
-- Supports offline functionality
-- Secure and reliable data management
-- Optimized performance for mobile devices
+## SUPPLEMENTAL RESOURCES  
+1.	How to clone a project to IntelliJ using Git?
 
-### Comprehensive Course Management
-- Create, update, delete, and view academic terms and courses
-- Manage multiple courses within each term
-- Intuitive interface for tracking academic schedules
+> Ensure that you have Git installed on your system and that IntelliJ is installed using [Toolbox](https://www.jetbrains.com/toolbox-app/). Make sure that you are using version 2022.3.2. Once this has been confirmed, click the clone button and use the 'IntelliJ IDEA (HTTPS)' button. This will open IntelliJ with a prompt to clone the proejct. Save it in a safe location for the directory and press clone. IntelliJ will prompt you for your credentials. Enter in your WGU Credentials and the project will be cloned onto your local machine.  
 
-### Secure Authentication
-- Secure login with hashed PIN protection
-- Easy first-time user setup
-- Robust credential validation
+2. How to create a branch and start Development?
 
-### Powerful Reporting
-- Generate detailed reports on:
-  - Course information
-  - Term progress
-  - Assessment dates
-- Visualize academic performance at a glance
+- GitLab method
+> Press the '+' button located near your branch name. In the dropdown list, press the 'New branch' button. This will allow you to create a name for your branch. Once the branch has been named, you can select 'Create Branch' to push the branch to your repository.
 
-### Smart Search Capabilities
-- Quick filtering of courses
-- Search by name, status, or date range
-- Instantly find the information you need
+- IntelliJ method
+> In IntelliJ, Go to the 'Git' button on the top toolbar. Select the new branch option and create a name for the branch. Make sure checkout branch is selected and press create. You can now add a commit message and push the new branch to the local repo.
 
-### Cross-Platform Compatibility
-- Runs on Android, iOS, Windows, and macOS
-- Consistent user experience across devices
+## SUPPORT
+If you need additional support, please navigate to the course page and reach out to your course instructor.
 
-## 🚀 Getting Started
-
-### Prerequisites
-- [.NET 8.0 SDK](https://dotnet.microsoft.com/download)
-- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) with .NET MAUI workload
-- Git
-- Android emulator or physical device
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone <YOUR_REPOSITORY_URL>
-   cd UniversityCourseTracker
-   ```
-
-2. Restore dependencies:
-   ```bash
-   dotnet restore
-   ```
-
-3. Build the application:
-   ```bash
-   dotnet build
-   ```
-
-4. Deploy to Android:
-   ```bash
-   dotnet build -t:Run -f net8.0-android
-   ```
-
-## 🧪 Testing
-
-The application includes comprehensive unit tests using xUnit, covering:
-- User authentication
-- Course management
-- PIN validation
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Submit a pull request
-
-Please ensure your code follows project guidelines and includes appropriate tests.
-
-## 📄 License
-
-This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
-To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
-
-## 📞 Contact
-
-For inquiries or support, please contact Lanceroy at lanceroycompany@gmail.com.
-
-## 🔗 Additional Resources
-- [Project Documentation](link-to-docs)
-- [Issue Tracker](link-to-issues)
+## FUTURE USE
+Take this opportunity to create or add to a simple resume portfolio to highlight and showcase your work for future use in career search, experience, and education!

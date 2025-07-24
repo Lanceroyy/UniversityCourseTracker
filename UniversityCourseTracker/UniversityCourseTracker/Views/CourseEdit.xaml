@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C971App.Views.CourseEdit"
+             Title="Edit Course"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+
+    <!--PartC2-->
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Always" VerticalOptions="FillAndExpand">
+            <StackLayout>
+                <Grid Padding="5" BackgroundColor="WhiteSmoke" ColumnSpacing="22" RowSpacing="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Row 0: ID -->
+                    <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center">ID</Label>
+                    <Entry x:Name="CourseId" Grid.Row="0" Grid.Column="1" IsReadOnly="True" Placeholder="Enter Course ID" Text="{Binding Id}"
+                        VerticalTextAlignment="Center" />
+
+                    <!-- Row 1: Name -->
+                    <Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center">Name</Label>
+                    <Entry x:Name="CourseName" Grid.Row="1" Grid.Column="1" Placeholder="Enter Course Name" Text="{Binding Name}"
+                         VerticalTextAlignment="Center" />
+
+                    <!-- Row 2: Status -->
+                    <Label Grid.Row="2" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center">Status</Label>
+                    <Picker x:Name="CourseColorPicker" Title="Select a Status" Grid.Row="2" Grid.Column="1" FontSize="Medium" TitleColor="Teal" >
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>In Progress</x:String>
+                                <x:String>Completed</x:String>
+                                <x:String>Dropped</x:String>
+                                <x:String>Plan To Take</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+
+                    <!-- Row 3: Start Date -->
+                    <Label Grid.Row="3" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center">Start Date</Label>
+                    <DatePicker x:Name="StartDatePicker" Grid.Row="3" Grid.Column="1" />
+
+                    <!-- Row 4: End Date -->
+                    <Label Grid.Row="4" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center">End Date</Label>
+                    <DatePicker x:Name="EndDatePicker" Grid.Row="4" Grid.Column="1" />
+
+                    <!-- Row 5: Notes -->
+                    <Label Grid.Row="5" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center">Notes</Label>
+                    <Editor x:Name="NotesEditor" Grid.Row="5" Grid.Column="1" Placeholder="Enter notes here." />
+
+                    <!-- Row 6: Share Button -->
+                    <Label Grid.Row="6" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" VerticalTextAlignment="Center">Share</Label>
+                    <Button x:Name="ShareButton" Grid.Row="6" Grid.Column="1" Clicked="ShareButton_OnClicked" 
+                        FontSize="Medium" Text="Share" VerticalOptions="Center" HorizontalOptions="Start" />
+
+                    <!-- Row 7: Notify Switch -->
+                    <Label Grid.Row="7" Grid.Column="0" FontAttributes="Bold" FontSize="Medium" Text="Notify" VerticalTextAlignment="Center" />
+                    <Switch x:Name="Notification" Grid.Row="7" Grid.Column="1" HorizontalOptions="Start" IsToggled="True" VerticalOptions="Center" />
+
+                    <!-- Instructor Expander -->
+                    <toolkit:Expander Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Padding="3">
+                        <toolkit:Expander.Header>
+                            <Label Text="Instructor" FontAttributes="Bold" FontSize="Medium" Background="LightBlue" HorizontalTextAlignment="Center">
+                                <Label.Shadow>
+                                    <Shadow Brush="Black" Offset="2,2" Radius="3" />
+                                </Label.Shadow>
+                            </Label>
+                        </toolkit:Expander.Header>
+                        <toolkit:Expander.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center">Instructor Name</Label>
+                                <Entry x:Name="InstructorName" Grid.Row="0" Grid.Column="1" Placeholder="Jim James" Text="{Binding InstructorName}"
+                                     VerticalTextAlignment="Center" />
+
+                                <Label Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center">Instructor Phone</Label>
+                                <Entry x:Name="InstructorPhone" Grid.Row="1" Grid.Column="1" Placeholder="555-555-5555" Text="{Binding InstructorPhone}"
+                                     VerticalTextAlignment="Center" TextChanged="PhoneEntry_OnTextChanged" MaxLength="12"/>
+
+                                <Label Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center">Instructor Email</Label>
+                                <Entry x:Name="InstructorEmail" Grid.Row="2" Grid.Column="1" Placeholder="Jim@wgu.edu" Text="{Binding InstructorEmail}"
+                                     VerticalTextAlignment="Center"/>
+                            </Grid>
+                        </toolkit:Expander.Content>
+                    </toolkit:Expander>
+
+                    <!-- Objective Assessment Expander -->
+                    <toolkit:Expander Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Padding="3" >
+                        <toolkit:Expander.Header>
+                            <Label Text="Objective Assessment" FontAttributes="Bold" FontSize="Medium" Background="LightBlue" HorizontalTextAlignment="Center">
+                                <Label.Shadow>
+                                    <Shadow Brush="Black" Offset="2,2" Radius="3" />
+                                </Label.Shadow>
+                            </Label>
+                        </toolkit:Expander.Header>
+                        <toolkit:Expander.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0" Text="Assessment Name:" />
+                                <Entry Grid.Row="0" Grid.Column="1" x:Name="ObjectiveAssessmentName" Text="{Binding ObjectiveAssessmentName}" />
+
+                                <Label Grid.Row="1" Grid.Column="0" Text="Start Date:" />
+                                <DatePicker Grid.Row="1" Grid.Column="1" x:Name="ObjectiveAssessmentStartDate" Date="{Binding ObjectiveAssessmentStartDate}" />
+
+                                <Label Grid.Row="2" Grid.Column="0" Text="Due Date:" />
+                                <DatePicker Grid.Row="2" Grid.Column="1" x:Name="ObjectiveAssessmentDueDate" Date="{Binding ObjectiveAssessmentDueDate}" />
+
+                                <Label Grid.Row="3" Grid.Column="0">Notify</Label>
+                                <Switch Grid.Row="3" Grid.Column="1" x:Name="ObjectiveAssessmentNotification" HorizontalOptions="Start" IsToggled="True" />
+                            </Grid>
+                        </toolkit:Expander.Content>
+                    </toolkit:Expander>
+
+                    <!-- Performance Assessment Expander -->
+                    <toolkit:Expander Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Padding="3" >
+                        <toolkit:Expander.Header>
+                            <Label Text="Performance Assessment" FontAttributes="Bold" FontSize="Medium" Background="LightBlue" HorizontalTextAlignment="Center">
+                                <Label.Shadow>
+                                    <Shadow Brush="Black" Offset="2,2" Radius="3" />
+                                </Label.Shadow>
+                            </Label>
+                        </toolkit:Expander.Header>
+                        <toolkit:Expander.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0" Text="Assessment Name:" />
+                                <Entry Grid.Row="0" Grid.Column="1" x:Name="PerformanceAssessmentName" Text="{Binding PerformanceAssessmentName}" />
+
+                                <Label Grid.Row="1" Grid.Column="0" Text="Start Date:" />
+                                <DatePicker Grid.Row="1" Grid.Column="1" x:Name="PerformanceAssessmentStartDate" Date="{Binding PerformanceAssessmentStartDate}" />
+
+                                <Label Grid.Row="2" Grid.Column="0" Text="Due Date:" />
+                                <DatePicker Grid.Row="2" Grid.Column="1" x:Name="PerformanceAssessmentDueDate" Date="{Binding PerformanceAssessmentDueDate}" />
+
+                                <Label Grid.Row="3" Grid.Column="0">Notify</Label>
+                                <Switch Grid.Row="3" Grid.Column="1" x:Name="PerformanceAssessmentNotification" HorizontalOptions="Start" IsToggled="True" />
+                            </Grid>
+                        </toolkit:Expander.Content>
+                    </toolkit:Expander>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="SaveCourse" Text="Save" Clicked="SaveCourse_OnClicked"></ToolbarItem>
+        <ToolbarItem x:Name="CancelCourse" Text="Cancel" Clicked="CancelCourse_OnClicked"></ToolbarItem>
+        <ToolbarItem x:Name="DeleteCourse" Text="Delete" Clicked="DeleteCourse_OnClicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+</ContentPage>

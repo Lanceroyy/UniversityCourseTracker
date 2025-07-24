@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C971App.Views.TermAdd"
+             Title="Add Term">
+
+    <ContentPage.Content>
+        <StackLayout>
+            
+            <Grid Padding="1" BackgroundColor="WhiteSmoke" ColumnSpacing="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    
+                    <!--
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    -->
+                    
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center">Name</Label>
+                <Entry x:Name="TermName" Grid.Row="0" Grid.Column="1" Placeholder="Enter Term Name" Text="{Binding Name}" VerticalTextAlignment="Center" />
+
+                <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center">Semsester</Label>
+                <Picker x:Name="TermSemesterPicker" Title="Select Status" Grid.Row="1" Grid.Column="1" FontSize="Medium">
+                    <Picker.Items>
+                        <x:String>Spring</x:String>
+                        <x:String>Summer</x:String>
+                        <x:String>Fall</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <!--
+                <Label Grid.Row="2" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center">Stock</Label>
+                <Entry x:Name="TermsInStock" Grid.Row="2" Grid.Column="1" Placeholder="Enter Number of Terms in stock" />
+                -->
+
+                <!--
+                <Label Grid.Row="3" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center">Price</Label>
+                <Entry x:Name="TermPrice" Grid.Row="3" Grid.Column="1" Placeholder="Enter Term Price" />
+                -->
+
+                <Label Grid.Row="2" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center">Start Date</Label>
+                <DatePicker x:Name="StartDatePicker" Grid.Row="2" Grid.Column="1" />
+
+                <Label Grid.Row="3" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center">End Date</Label>
+                <DatePicker x:Name="EndDatePicker" Grid.Row="3" Grid.Column="1" />
+            </Grid>
+            
+        </StackLayout>
+    </ContentPage.Content>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="SaveTerm" Text="Save" Clicked="SaveTerm_OnClicked"></ToolbarItem>
+        <ToolbarItem x:Name="CancelTerm" Text="Cancel" Clicked="CancelTerm_OnClicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+</ContentPage>
